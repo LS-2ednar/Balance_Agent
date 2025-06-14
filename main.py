@@ -25,13 +25,13 @@ def main():
         if verbose:
             print(f"User prompt: {user_prompt}\n")
             
-            messages = [
-                    types.Content(role="user", parts=[types.Part(text=user_prompt)]),
-                    ]
+        messages = [
+                types.Content(role="user", parts=[types.Part(text=user_prompt)]),
+                ]
         generate_content(client, messages, verbose)
 
 
-def generate_content(client, messages, verbose):
+def generate_content(client, messages, verbose=None):
     response = client.models.generate_content(
             model="gemini-2.0-flash-001",
             contents=messages,
