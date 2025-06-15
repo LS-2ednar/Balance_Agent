@@ -1,7 +1,7 @@
 from functions.get_files_info import get_files_info
 from functions.get_file_content import get_file_content
 from functions.write_file import write_file
-
+from functions.run_python_file import run_python_file
 """
 print("\nTest 1: get_files_info")
 print(get_files_info("calculator","."))
@@ -19,10 +19,15 @@ print("\nTest 2: get_file_content")
 print(get_file_content("calculator","pkg/calculator.py"))
 print("\nTest 3: get_file_content")
 print(get_file_content("calculator","/bin/cat"))
-"""
 print("Test 1: write_function")
 print(write_file("calculator", "lorem.txt", "wait, this isn't lorem ipsum"))
 print("Test 2: write_function")
 print(write_file("calculator", "pkg/morelorem.txt", "lorem ipsum dolor sit amet"))
 print("Test 3: write_function")
 print(write_file("calculator", "/tmp/temp.txt", "this should not be allowed"))
+"""
+
+print(run_python_file("calculator", "main.py"))
+print(run_python_file("calculator", "tests.py"))
+print(run_python_file("calculator", "../main.py"))
+print(run_python_file("calculator", "nonexistent.py"))
