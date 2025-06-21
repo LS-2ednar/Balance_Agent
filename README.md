@@ -9,4 +9,12 @@ A depiction of the Chatbot control looks like this:
 
 Directory--> <-- Bot (Execute Code) 
 
-The Code to execute is generated using Google's Gemini Model 
+The Code to execute is generated using Google's Gemini Model.
+
+Another fun fact is that this project has several "security" relevant topics:
+- API Key Management
+- Creating Files automatically
+- Generating Code automatically
+- Executing Code automatically
+
+Therefore proper safety mesures needed to be put in place 
