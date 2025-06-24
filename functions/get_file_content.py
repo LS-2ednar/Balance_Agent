@@ -1,3 +1,4 @@
+from config import MAX_CHARS
 import os
 
 def get_file_content(working_directory, file_path):
@@ -13,9 +14,9 @@ def get_file_content(working_directory, file_path):
     
     try:
         with open(wd,"r") as ft:
-            file_content_string = ft.read(10_000)
+            file_content_string = ft.read(MAX_CHARS)
 
-        if len(file_content_string) == 10_000:
+        if len(file_content_string) == MAX_CHARS:
             return f'{file_content_string} "{file_path}" truncated at 10000 characters'
         else:
             return f'{file_content_string}'

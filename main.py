@@ -3,6 +3,7 @@ import os
 from google import genai
 from google.genai import types
 from dotenv import load_dotenv
+from functions.call_function import call_function, available_functions
 
 system_prompt = """
 You are a helpful AI coding agent.
@@ -77,11 +78,13 @@ schema_write_file = types.FunctionDeclaration(
     ),
 )
 
+"""
 available_functions = types.Tool(
     function_declarations=[
         schema_get_files_info, schema_get_file_content, schema_run_python_file, schema_write_file
     ]
 )
+"""
 
 def main():
         load_dotenv()
@@ -108,6 +111,8 @@ def main():
                 ]
         generate_content(client, messages, verbose)
 
+
+
 def generate_content(client, messages, verbose=None):
     response = client.models.generate_content(
             model="gemini-2.0-flash-001",
@@ -123,6 +128,22 @@ def generate_content(client, messages, verbose=None):
             print(f"Calling function: {function_call_part.name}({function_call_part.args})")
     print("Response:")
     print(response.text)
+
+    function_responses = []
+    for function_call_part in response.function_calls:
+        function_call_result = call_function(function_call_part, verbose)
+        if (
+            not function_call_result.parts
+            or not function_call_result.parts[0].function_response
+        ):
+            raise Exception("empty function call result")
+        if verbose:
+            print(f"-> {function_call_result.parts[0].function_response.response}")
+        function_responses.append(function_call_result.parts[0])
+
+    if not function_responses:
+        raise Exception("no function responses generated, exiting.")
+    
 
 if __name__ == "__main__":
     main()
