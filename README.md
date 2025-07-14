@@ -19,4 +19,5 @@ Another fun fact is that this project has several "security" relevant topics:
 
 Therefore proper safety mesures needed to be put in place
 
-TO ENSURE I DO NOT LOSE MY BOOTDEV STREAK I UPDATEDED THIS SECTION HERE TODAY! 
+TO ENSURE I DO NOT LOSE MY BOOTDEV STREAK I UPDATEDED THIS SECTION HERE TODAY!
+one more line to this document was added to ensure the screat keeps continuning 
